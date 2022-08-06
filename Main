@@ -1,0 +1,64 @@
+#include <iostream>
+#include <stdlib.h>
+#include "matrice23.h"
+using namespace std;
+
+int main()
+{
+    int a,b; //nhap dong cot
+    cin>> a >> b;
+    // khai bao cac ma tran 
+    int **c;
+    c=(int**)malloc(sizeof(int*)*a);
+    for(int i=0;i<a;i++)
+    {
+        c[i]=(int*)malloc(sizeof(int)*b);
+    }
+    int **d;
+    d=(int**)malloc(sizeof(int*)*a);
+    for(int i=0;i<a;i++)
+    {
+        d[i]=(int*)malloc(sizeof(int)*b);
+    }
+    //nhap ma tran
+    for(int i=0;i<a;i++)
+    {
+        for(int j=0;j<b;j++)
+        {
+            cout<<"c["<<i<<"]["<<j<<"]: ";
+            cin>>c[i][j];
+        }
+    }
+    for(int i=0;i<a;i++)
+    {
+        for(int j=0;j<b;j++)
+        {
+            cout<<"d["<<i<<"]["<<j<<"]: ";
+            cin>>d[i][j];
+        }
+    }
+    //check
+    cout<<"Matrice c: "<<endl;
+    for(int i=0;i<a;i++) //matrice c
+    {
+        for(int j=0;j<b;j++)
+        {
+            cout<<c[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+    cout<<"Matrice d: "<<endl;
+    for(int i=0;i<a;i++) //matrice d
+    {
+        for(int j=0;j<b;j++)
+        {
+            cout<<d[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+    cout<<"Matrice c + Matrice d: "<<endl;
+    plus_matrice(a,b,&c[0],&d[0]);
+    cout<<"Matrice c x Matrice d: "<<endl;
+    product_matrice(a,b,b,&c[0],&d[0]);
+    return 0;
+}
