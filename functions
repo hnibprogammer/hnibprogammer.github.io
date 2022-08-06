@@ -1,0 +1,63 @@
+#include <iostream>
+#include <stdlib.h>
+#include "matrice23.h"
+using namespace std;
+void transpose_matrice(int&a, int&b, int **c){
+    for(int i=0;i<b;i++)
+    {
+        for(int j=0;j<a;j++)
+        {
+            cout<<c[j][i]<<"\t";
+        }
+        cout<<endl;
+    }  
+}
+void plus_matrice(int &a, int &b, int **c, int **d) {
+    int **result_matrice;
+    result_matrice = (int**)malloc(sizeof(int*)*a);
+    for(int i=0;i<a;i++)
+    {
+        result_matrice[i] = (int*)malloc(sizeof(int)*b); 
+    }
+    for(int i=0;i<a;i++)
+    {
+        for(int j=0;j<b;j++)
+        {
+            result_matrice[i][j] = c[i][j] + d[i][j]; 
+        }
+    }
+    for(int i=0;i<a;i++)
+    {
+        for(int j=0;j<b;j++)
+        {
+            cout<<result_matrice[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+}
+void product_matrice(int &a, int &b, int&e, int **c, int **d){ //hai ma tran kich co axb, bxe
+    int **result1_matrice;
+    result1_matrice = (int**)malloc(sizeof(int*)*a);
+    for(int i=0;i<a;i++)
+    {
+        result1_matrice[i] = (int*)malloc(sizeof(int)*e); 
+    }
+    for(int i=0;i<a;i++)
+    {
+        for(int j=0;j<e;j++)
+        {
+            for(int m=0; m<b; m++)
+            {
+                result1_matrice[i][j]+=c[i][m]*d[m][j];
+            }
+        }
+    }
+    for(int i=0;i<a;i++)
+    {
+        for(int j=0;j<e;j++)
+        {
+            cout<<result1_matrice[i][j]<<"\t";
+        }
+        cout<<endl;
+    }
+}
